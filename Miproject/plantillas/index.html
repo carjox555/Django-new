@@ -8,7 +8,15 @@
 </head>
 <body>
     <h2 style="color:red">Nuestra primera plantilla.</h2>
-    <p>Eln nombre del profesor es: {{nombre_persona}} {{apellido_persona}}</p>
+
+    {% if nombre_persona == 'Profesor carlos' %}
+        <p>El curso lo imparte el profesor titular</p>
+    
+
+    {% else %}
+    <p>El curso lo esta dando</p>
+    {% endif %}
+    <p>Eln nombre del profesor es: {{nombre_persona}} {{apellido_persona.upper}}</p>
     <p>Estamos viendo las plantillas al dia: {{momento_actual}} </p>
     <p><strong>Temas del curso:</strong></p>
     <p>

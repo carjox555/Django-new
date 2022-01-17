@@ -54,7 +54,7 @@ ROOT_URLCONF = 'Miproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Udemy/23.Djan/Miproject/plantillas'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

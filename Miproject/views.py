@@ -3,6 +3,7 @@ import datetime
 from django.template import Template, Context
 
 from django.http.request import HttpRequest
+from django.template import loader
 
 class Persona(object):
     def __init__(self, nombre, apellido):
@@ -13,15 +14,19 @@ html="se despidio"
 def saludo(request):
     # nombre="Carlos"
     # apellido="Berro"
+    #loader = cargador de plantillas
     p1=Persona("Profesor carlos","Berro")
     temas=["plantillas","modelos","Vista","despliegue"]
     ahora=datetime.datetime.now()
-    doc_externo=open("C:/Udemy/23.Djan/Miproject/plantillas/index.html")
-    plt=Template(doc_externo.read())
-    doc_externo.close()
-    ctx=Context({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
+
+
+   # doc_externo=open("C:/Udemy/23.Djan/Miproject/plantillas/index.html")
+  #  plt=Template(doc_externo.read())
+    #doc_externo.close()
+    doc_externo=loader.get_template('index.html')
+    #ctx=Context({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
     #se almacena todo el rederizado de la pagina
-    document=plt.render(ctx)
+    document=doc_externo.render({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
     return HttpResponse(document)
 
 
