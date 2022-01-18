@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<style>
+    #title{
+        background-color: blueviolet;
+        color: white;
+        text-align: center;
+        padding: 2px;
+    }
+</style>
+<body>
+    <h1 id="title">Diseño de Sitios WEB</h1>
+    <h2>Toda clase de sistios para tu necesidad</h2>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <p id="title">Gracias por su visita</p>
+
+</body>
+</html>

@@ -3,7 +3,8 @@ import datetime
 from django.template import Template, Context
 
 from django.http.request import HttpRequest
-from django.template import loader
+from django.template.loader import get_template
+from django.shortcuts import render
 
 class Persona(object):
     def __init__(self, nombre, apellido):
@@ -23,11 +24,12 @@ def saludo(request):
    # doc_externo=open("C:/Udemy/23.Djan/Miproject/plantillas/index.html")
   #  plt=Template(doc_externo.read())
     #doc_externo.close()
-    doc_externo=loader.get_template('index.html')
+   # doc_externo=get_template('index.html')
     #ctx=Context({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
     #se almacena todo el rederizado de la pagina
-    document=doc_externo.render({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
-    return HttpResponse(document)
+   # document=doc_externo.render({"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
+    
+    return render(request,"index.html",{"nombre_persona ":p1.nombre,"apellido_persona":p1.apellido, "momento_actual":ahora,"temas":temas})
 
 
 def despedida(request):         
@@ -50,5 +52,10 @@ def damefecha(request):
 #     <h2>En el año %s tendras %s añosa</h2></body>"""%(agno, edadFutura) # => % marcador de posicion
 #     return(document)
 
-def plantilla(request):
-    return HttpResponse("")
+def home(request):
+    fecha_Actual=datetime.datetime.now()
+    return render(request, "home.html",{"damefecha":fecha_Actual})
+
+def services(request):
+    fecha_Actual=datetime.datetime.now()
+    return render(request, "servicios.html",{"damefecha":fecha_Actual})
